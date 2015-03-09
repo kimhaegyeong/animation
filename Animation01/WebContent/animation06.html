@@ -1,0 +1,129 @@
+<!-- 원호 - 그라데이션 색 넣기
+ -->
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+body {
+	margin: 0px;
+	padding: 0px;
+}
+</style>
+</head>
+<body>
+	<!-- multi layer 같은 기능을 하기 위해 canvas위에 canvas를 올림 -->
+	<div style="position: relative;">
+		<canvas id="myCanvas1" width="700" height="700"
+			style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+		<canvas id="myCanvas2" width="700" height="700"
+			style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
+	</div>
+	<script>
+		var canvas1 = document.getElementById('myCanvas1');
+		var canvas2 = document.getElementById('myCanvas2');
+
+		var context = canvas1.getContext('2d');
+		var arc = canvas2.getContext('2d');
+		var centerX = canvas1.width / 2;
+		var centerY = canvas1.height / 2;
+		var maxRadius = 310;
+
+		drawCircle();
+
+		drawRoationLine();
+
+		var num = 0;
+		var test = setInterval(function() {
+			drawArc(num++);
+		}, 100);
+
+		function drawCircle() {
+			// 원형 그리기
+			for (var radius = 10; radius <= maxRadius; radius += 5) {
+				context.beginPath();
+				context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+				context.closePath();
+
+				if ((radius / 5) % 5 == 2 && radius != 310) {
+					context.lineWidth = 2;
+				} else {
+					context.lineWidth = 1;
+				}
+				//context.fillStyle = 'red';
+				//context.fill();
+				context.strokeStyle = '#000000';
+				context.stroke();
+			}
+		}
+
+		function drawRoationLine() {
+			// 중앙에서 뻗어나가는 선
+			// 360도 회전
+			var n = 60; // 라인 수
+			var alpha = Math.PI * 2 / n;
+
+			for (var i = 0; i < n; i++) {
+				var theta2 = alpha * (i + 1);
+
+				context.beginPath();
+				context.moveTo(centerX, centerY);
+				context.lineTo(centerX + Math.cos(theta2) * maxRadius, centerY
+						+ Math.sin(theta2) * maxRadius);
+				context.stroke();
+			}
+		}
+
+		function drawArc(num) {
+			/*
+			각도 = 1부터 3사이의 수 * Math.PI
+			120도 : (endAngle - startAngle) = 0.8
+			 */
+
+			//var startAngle = (1 + (0.1 * num)) * Math.PI;
+			//var endAngle = (1.8 + (0.1 * num)) * Math.PI;
+			var counterClockwise = false;
+
+			//clear
+			arc.clearRect(0, 0, canvas2.width, canvas2.height);
+
+			for (var radius = 5; radius <= maxRadius; radius += 25) {
+
+				arc.beginPath();
+				arc.arc(centerX, centerY, radius,
+						(1 + (0.1 * num * radius / maxRadius)) * Math.PI, // startAngle
+						(1.8 + (0.1 * num * radius / maxRadius)) * Math.PI, // endAngle
+						counterClockwise);
+				arc.lineWidth = 8;
+
+				// 원형 그라데이션
+				/*
+				var grd = context.createRadialGradient(centerX, centerY, 10,
+						centerX, CenterY, 300);
+				// frist color
+				grd.addColorStop(0, '#0026FF');
+				// secound color
+				grd.addColorStop(1, '#FFD801');
+
+				arc.strokeStyle = grd;
+				*/
+				
+				// 선형 그라데이션		
+				var linearGradient = context.createLinearGradient(0, 0, 650,
+						650);
+
+				// frist color
+				linearGradient.addColorStop(0, '#0026FF');
+				// secound color
+				linearGradient.addColorStop(1, '#FF8000');
+				
+				arc.strokeStyle = linearGradient;
+
+				arc.stroke();
+			}
+
+			startAngle++;
+			endAngle++;
+		}
+	</script>
+</body>
+</html>
