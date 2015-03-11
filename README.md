@@ -1,5 +1,5 @@
 # animation
-<h3>animation01</h3>  <br>
+<h3>animation01</h3>  
 html5 canvas, javascript <br>
 http://schema9.esy.es/html5_test/animation01.html <br>
 http://schema9.esy.es/html5_test/animation02.html <br>
