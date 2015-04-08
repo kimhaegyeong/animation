@@ -8,15 +8,11 @@
 <link
 	href='http://fonts.googleapis.com/css?family=Shadows+Into+Light|Droid+Serif'
 	rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css"
+	href="js/fullpage/jquery.fullPage.css" />
 
 <script src="js/jquery-1.11.1.js"></script>
-
-<!-- scroll animation -->
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/ScrollMagic.min.js"></script>
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/plugins/addIndicators.min.js"></script>
-</head>
+<script src="js/fullpage/jquery.fullPage.js"></script>
 
 <style>
 @font-face {
@@ -108,15 +104,19 @@ ul li a span {
 	margin: 7px 0;
 }
 
-#content {
+.content {
 	position: relative;
 	top: 49px;
 	width: 100%;
 	height: 100%;
 }
 
-#main_img {
+.deliverH {
 	height: 100%;
+}
+
+#main_img {
+	height: calc(100% - 49px);
 	background: url("img/spring-632098_1280.jpg") no-repeat top center;
 	background-size: cover;
 	padding: 0;
@@ -132,6 +132,8 @@ p#main_sub {
 	font-size: 2.063em;
 	font-weight: 300;
 	letter-spacing: 2px;
+	text-align: center;
+	margin: 5px 0;
 	font-family: 'Shadows Into Light', cursive;
 }
 
@@ -139,6 +141,8 @@ p#main_sub_under {
 	font-size: 1em;
 	line-height: 1.3em;
 	letter-spacing: 1px;
+	text-align: center;
+	margin: 0;
 	font-family: 'Shadows Into Light', cursive;
 }
 
@@ -229,6 +233,7 @@ dd.txt {
 #poem01 {
 	text-align: center;
 	padding-bottom: 2.500em;
+	height: calc(100% - 49px);
 }
 
 #poem01 h3 {
@@ -249,14 +254,13 @@ dd.txt {
 	line-height: 1.700em;
 }
 </style>
-
 <body>
 	<div id="header">
 		<img src="img/menu45.png" id="menu_icon">
 		<h1 class="logo">SPRING</h1>
 	</div>
-	<div id="content">
-		<div id="main_img">
+	<div id="fullpage" class="content">
+		<div id="main_img" class="section">
 			<h1 class="logo01">SPRING</h1>
 			<p id="main_sub">
 				has returned.<br>
@@ -266,50 +270,36 @@ dd.txt {
 				Rilke
 			</p>
 		</div>
-		<div id="poem01">
+		<div id="poem01" class="section">
 			<h3>봄을 그대에게</h3>
 
 			<p>
 				갖가지 기적을 일으키는<br> 봄을 그대에게 보이리라<br> 봄은 숲에서 오는 것<br>
 				도시에는 오지 않네<br> <br> 쌀쌀한 도시에서 <br> 손을 잡고서<br> 나란히
-				둘이 걷는 사람만<br> 언젠가 한번은 봄을 볼 수 <br> 있으리라<br>
-				<span>&nbsp;&nbsp;&nbsp; - 라이너 마리아 릴케<br></span>
+				둘이 걷는 사람만<br> 언젠가 한번은 봄을 볼 수 <br> 있으리라<br> <span>&nbsp;&nbsp;&nbsp;
+					- 라이너 마리아 릴케<br>
+				</span>
 			<p>
 		</div>
-		<div class="video-container">
-			<iframe allowfullscreen="no" frameborder="0"
-				src="https://www.youtube.com/embed/8W7xF2JLudY?autohide=1"></iframe>
+		<div id="media01" class="section">
+			<div class="video-container">
+				<iframe allowfullscreen="no" frameborder="0"
+					src="https://www.youtube.com/embed/8W7xF2JLudY?autohide=1"></iframe>
+			</div>
 		</div>
 
 		<div class="video-container">
 			<iframe allowfullscreen="no" frameborder="0"
 				src="https://www.youtube.com/embed/Zkqwme7opPw?autohide=1"></iframe>
 		</div>
-		<div id="notice_tit">
-			<p>What's news</p>
-			<ul>
-				<li><a href="/Press/PressView/1?idx=313">팅크웨어, 아이나비 신규 TV
-						CF 공개.... <span>2015.04.06</span>
-				</a></li>
-				<li><a href="/Press/PressView/1?idx=312">팅크웨어, 종합브랜드스토어
-						‘아이나.. <span>2015.03.23</span>
-				</a></li>
-				<li><a href="/Press/PressView/1?idx=311">팅크웨어, 아이나비 내비게이션 및
-						블.. <span>2015.03.18</span>
-				</a></li>
-				<li><a href="/Press/PressView/1?idx=310">팅크웨어, 역대 최대 규모의
-						‘아이나.. <span>2015.03.16</span>
-				</a></li>
-				<li><a href="/Press/PressView/1?idx=309">팅크웨어, 9년 연속 아이나비
-						브랜드파.. <span>2015.03.11</span>
-				</a></li>
-			</ul>
-		</div>
-
+		-->
 	</div>
 
 	<script>
-		
+		$(document).ready(function() {
+			$('#fullpage').fullpage()
+
+		});
 	</script>
 </body>
 </html>
