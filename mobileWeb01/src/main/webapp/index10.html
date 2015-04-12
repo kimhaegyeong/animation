@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SPRING</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"
+	charset="UTF-8">
+<link
+	href='http://fonts.googleapis.com/css?family=Shadows+Into+Light|Droid+Serif'
+	rel='stylesheet' type='text/css'>
+
+<script src="js/jquery-1.11.1.js"></script>
+
+<!-- scroll animation -->
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/ScrollMagic.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/plugins/addIndicators.min.js"></script>
+</head>
+
+<style>
+@font-face {
+	font-family: NanumBrush;
+	src: url(fonts/NanumBrush.ttf);
+}
+
+@font-face {
+	font-family: SeoulHangangL;
+	src: url(fonts/08SeoulHangangL.ttf);
+}
+
+html, body {
+	margin: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
+	width: 100%;
+	height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul, li {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+ul {
+	padding-top: 5px;
+}
+
+li {
+	padding: 3px;
+}
+
+ul li a {
+	font-size: 15px;
+	color: #2b2b2b;
+}
+
+ul li a span {
+	font-size: 10px;
+	float: right;
+	margin-top: 1px;
+}
+
+#header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 47px;
+	/* background: #2b2b2b; */
+	background: #FFFFFF;
+	border-bottom: 3px solid #FF0040;
+	z-index: 2;
+}
+
+#menu_icon {
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	height: 20px;
+}
+
+.logo {
+	text-align: center;
+	color: #FF0040;
+	font-family: monospace;
+	margin: 7px 0;
+}
+
+.logo01 {
+	text-align: center;
+	color: #FF0040;
+	font-size: 5em;
+	font-family: monospace;
+	padding-top: 30px;
+	margin: 0 0 -20px 0;
+}
+
+.logo: after {
+	text-align: center;
+	color: #ec342e;
+	font-family: monospace;
+	margin: 7px 0;
+}
+
+#content {
+	position: relative;
+	top: 49px;
+	width: 100%;
+	height: 100%;
+}
+
+#main_img {
+	height: 100%;
+	background: url("img/spring-632098_1280.jpg") no-repeat top center;
+	background-size: cover;
+	padding: 0;
+}
+
+#main_img>p {
+	text-align: center;
+	margin: 0;
+}
+
+p#main_sub {
+	padding-top: 0px;
+	font-size: 2.063em;
+	font-weight: 300;
+	letter-spacing: 2px;
+	font-family: 'Shadows Into Light', cursive;
+}
+
+p#main_sub_under {
+	font-size: 1em;
+	line-height: 1.3em;
+	letter-spacing: 1px;
+	font-family: 'Shadows Into Light', cursive;
+}
+
+#notice_tit {
+	padding: 35px 20px;
+	height: 180px;
+}
+
+#notice_tit>p {
+	font-size: 20px;
+	font-family: monospace;
+	font-weight: bold;
+	margin: 3px;
+}
+
+#media {
+	height: 600px;
+}
+
+/* height가 width의 크기에 따라 결정 */
+.video-container {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 30px;
+	height: 0;
+	overflow: hidden;
+}
+
+.video-container iframe, .video-container object, .video-container embed
+	{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#sns {
+	padding: 30px 0;
+}
+
+#sns div {
+	display: inline-block;
+	width: 49%;
+	text-align: center;
+	padding: 20px 0;
+}
+
+#sns div h3 {
+	margin: 10px 0;
+	font-size: 20px;
+	font-weight: 100;
+	font-family: monospace;
+	letter-spacing: 2px;
+}
+
+#products {
+	padding: 50px 0;
+}
+
+#products {
+	text-align: center;
+	width: 100%;
+}
+
+#products .domastic_img {
+	width: 100%;
+}
+
+#products .domastic_logo {
+	width: 50%;
+}
+
+dd.tit {
+	font-size: 15px;
+	line-height: 24px;
+	color: #2b2b2b;
+	margin: 15px 0;
+}
+
+dd.txt {
+	font-size: 13px;
+	line-height: 22px;
+	color: #7f7f7f;
+	margin: 0;
+}
+
+#poem01 {
+	text-align: center;
+	padding-bottom: 2.500em;
+}
+
+#poem01 h3 {
+	font-family: 'NanumBrush';
+	font-weight: 100;
+	font-size: 2.500em;
+	letter-spacing: 3px;
+}
+
+#poem01 p {
+	font-family: 'SeoulHangangL';
+	font-size: 1.250em;
+	line-height: 1.700em;
+}
+
+#poem01 span {
+	font-size: 0.700em;
+	line-height: 1.700em;
+}
+</style>
+
+<body>
+	<div id="header">
+		<img src="img/menu45.png" id="menu_icon">
+		<h1 class="logo">SPRING</h1>
+	</div>
+	<div id="content">
+		<div id="main_img">
+			<h1 class="logo01">SPRING</h1>
+			<p id="main_sub">
+				has returned.<br>
+			</p>
+			<p id="main_sub_under">
+				The Earth is like a child that knows poems. <br> - Rainer Maria
+				Rilke
+			</p>
+		</div>
+		<div id="poem01">
+			<h3>봄을 그대에게</h3>
+
+			<p>
+				갖가지 기적을 일으키는<br> 봄을 그대에게 보이리라<br> 봄은 숲에서 오는 것<br>
+				도시에는 오지 않네<br> <br> 쌀쌀한 도시에서 <br> 손을 잡고서<br> 나란히
+				둘이 걷는 사람만<br> 언젠가 한번은 봄을 볼 수 <br> 있으리라<br>
+				<span>&nbsp;&nbsp;&nbsp; - 라이너 마리아 릴케<br></span>
+			<p>
+		</div>
+		<div class="video-container">
+			<iframe allowfullscreen="no" frameborder="0"
+				src="https://www.youtube.com/embed/8W7xF2JLudY?autohide=1"></iframe>
+		</div>
+
+		<div class="video-container">
+			<iframe allowfullscreen="no" frameborder="0"
+				src="https://www.youtube.com/embed/Zkqwme7opPw?autohide=1"></iframe>
+		</div>
+		<div id="notice_tit">
+			<p>What's news</p>
+			<ul>
+				<li><a href="/Press/PressView/1?idx=313">팅크웨어, 아이나비 신규 TV
+						CF 공개.... <span>2015.04.06</span>
+				</a></li>
+				<li><a href="/Press/PressView/1?idx=312">팅크웨어, 종합브랜드스토어
+						‘아이나.. <span>2015.03.23</span>
+				</a></li>
+				<li><a href="/Press/PressView/1?idx=311">팅크웨어, 아이나비 내비게이션 및
+						블.. <span>2015.03.18</span>
+				</a></li>
+				<li><a href="/Press/PressView/1?idx=310">팅크웨어, 역대 최대 규모의
+						‘아이나.. <span>2015.03.16</span>
+				</a></li>
+				<li><a href="/Press/PressView/1?idx=309">팅크웨어, 9년 연속 아이나비
+						브랜드파.. <span>2015.03.11</span>
+				</a></li>
+			</ul>
+		</div>
+
+		<div id="products">
+			<img class="domastic_img" src="img/inavi.jpeg">
+			<dl>
+				<dt>
+					<img class="domastic_logo" src="img/inavi1.jpeg">
+				</dt>
+				<dd class="tit">내비게이션도 블랙박스도 역시 아이나비</dd>
+				<dd class="txt">
+					차량용 IT 업계 리딩 컴퍼니로써,<br> 혁신적인 기술과 서비스로 최고의 자리를 지켜나가겠습니다.
+				</dd>
+			</dl>
+
+
+		</div>
+
+
+
+
+		<div id="sns">
+			<div>
+				<img src="img/blog.jpg">
+				<h3>Blog</h3>
+			</div>
+			<div>
+				<img src="img/youtube.jpg">
+				<h3>Youtube</h3>
+			</div>
+			<div>
+				<img src="img/facebook.jpg">
+				<h3>Facebook</h3>
+			</div>
+			<div>
+				<img src="img/naver_cafe.jpg">
+				<h3>Cafe</h3>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		
+	</script>
+</body>
+</html>
