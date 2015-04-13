@@ -1,5 +1,7 @@
 package tycoon01;
 
+import javax.swing.ImageIcon;
+
 public class Bungubbang implements Cloneable {
 	// 익은 정도
 	private static state front;
@@ -51,24 +53,25 @@ public class Bungubbang implements Cloneable {
 		return front.value + back.value;
 	}	
 	
-	state checkState(int time) {
-		if (time == 0 && time == 1) {
+	state checkState(int time) {	
+		if (time < 2) {
 			return state.RARE;
-		} else if (time == 2 && time == 3) {
+		} else if (time >= 2 && time <= 3) {
 			return state.MEDIUM;
-		} else if (time == 4 && time == 5) {
+		} else if (time >= 4 && time <= 5) {
 			return state.BEST;
-		} else if (time == 6 && time == 7) {
+		} else if (time >= 6 && time <= 7) {
 			return state.MEDIUM_WELLDONE;
-		} else  {
+		} else if (time > 7) {
 			return state.WELLDONE;
-		} 		
+		}
+		return null;
 	}
 
 	@Override
-	protected Object clone() throws CloneNotSupportedException {
+	protected Bungubbang clone() throws CloneNotSupportedException {
 
-		return super.clone();
+		return (Bungubbang)super.clone();
 	}
 	
 }

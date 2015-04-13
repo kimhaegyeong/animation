@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JLayeredPane;
 
 public class MoldView {
 
@@ -91,18 +92,45 @@ public class MoldView {
 		seconed_p.setBounds(0, 40, 300, 120);
 		frame.getContentPane().add(seconed_p);
 		seconed_p.setLayout(null);
-		
-		JButton client1 = new JButton("client1");
+
+		JButton client1 = new JButton();
 		client1.setBounds(15, 15, 75, 96);
 		seconed_p.add(client1);
-		
-		JButton client2 = new JButton("client2n");
+					
+		JButton client2 = new JButton();
 		client2.setBounds(113, 15, 75, 96);
 		seconed_p.add(client2);
-		
-		JButton client3 = new JButton("client3");
+
+		JButton client3 = new JButton();
 		client3.setBounds(210, 15, 75, 96);
 		seconed_p.add(client3);
+		
+		JLabel client1_label = new JLabel("이얍머나일이이리일ㅇ");
+		client1_label.setFont(new Font("나눔고딕", Font.BOLD, 12));
+		client1_label.setBounds(15, 15, 100, 40);
+		seconed_p.add(client1_label);
+		
+		// 레이어드 시키기		
+		seconed_p.setComponentZOrder(client1, 1);
+		seconed_p.setComponentZOrder(client1_label, 0);
+
+		JLabel client2_label = new JLabel("5");
+		client2_label.setFont(new Font("나눔고딕", Font.BOLD, 12));
+		client2_label.setBounds(113, 15, 30, 30);
+					
+		JLabel client3_label = new JLabel("5");
+		client3_label.setFont(new Font("나눔고딕", Font.BOLD, 12));
+		client3_label.setBounds(210, 15, 30, 30);
+		seconed_p.add(client3_label);
+		
+		JLayeredPane layeredPane = new JLayeredPane();
+		layeredPane.setBounds(0, 0, 300, 120);
+		seconed_p.add(layeredPane);
+		
+		JLabel label = new JLabel("레이어드");
+		layeredPane.setLayer(label, 3);
+		label.setBounds(23, 12, 70, 15);
+		layeredPane.add(label);
 
 		/* 붕어빵 갯수 */
 		JPanel third_p = new JPanel();
