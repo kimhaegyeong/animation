@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,7 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 
-public class BungubbangView {
+public class BungubbangView01 {
 
 	private JFrame frame;
 
@@ -29,7 +28,7 @@ public class BungubbangView {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					BungubbangView window = new BungubbangView();
+					BungubbangView01 window = new BungubbangView01();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +40,7 @@ public class BungubbangView {
 	/**
 	 * Create the application.
 	 */
-	public BungubbangView() {
+	public BungubbangView01() {
 		initialize();
 	}
 
@@ -52,8 +51,8 @@ public class BungubbangView {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 300, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);	
-		
+		frame.getContentPane().setLayout(null);
+
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(245, 255, 250));
 		panel.setBounds(36, 69, 233, 60);
@@ -79,12 +78,9 @@ public class BungubbangView {
 		Queue<Bungubbang> diplayBungubbang;
 		int money;
 		JTextField num_textField;
-		JTextField money_textField;
-		People[] waitingList;
 
 		StartGame() {
 			money = 0;
-			waitingList = new People[3];
 		}
 
 		public void actionPerformed(ActionEvent e) {
@@ -99,8 +95,8 @@ public class BungubbangView {
 			frame.getContentPane().add(top_info);
 			top_info.setLayout(null);
 
-			money_textField = new JTextField();
-			money_textField.setText(Integer.toString(money));
+			JTextField money_textField = new JTextField();
+			money_textField.setText("0");
 			money_textField.setBounds(5, 5, 50, 30);
 			top_info.add(money_textField);
 			money_textField.setColumns(10);
@@ -138,45 +134,17 @@ public class BungubbangView {
 			frame.getContentPane().add(seconed_p);
 			seconed_p.setLayout(null);
 
-			JButton client1 = new JButton();
+			JButton client1 = new JButton("client1");
 			client1.setBounds(15, 15, 75, 96);
-			client1.addActionListener(new ClickClient(client1, 0));
 			seconed_p.add(client1);
 
-			JButton client2 = new JButton();
+			JButton client2 = new JButton("client2n");
 			client2.setBounds(113, 15, 75, 96);
-			client2.addActionListener(new ClickClient(client2, 1));
 			seconed_p.add(client2);
 
-			JButton client3 = new JButton();
+			JButton client3 = new JButton("client3");
 			client3.setBounds(210, 15, 75, 96);
-			client3.addActionListener(new ClickClient(client3, 2));
 			seconed_p.add(client3);
-
-			JLabel client1_label = new JLabel("5");
-			client1_label.setFont(new Font("나눔고딕", Font.BOLD, 12));
-			client1_label.setBounds(15, 15, 30, 30);
-			seconed_p.add(client1_label);
-
-			JLabel client2_label = new JLabel("5");
-			client2_label.setFont(new Font("나눔고딕", Font.BOLD, 12));
-			client2_label.setBounds(113, 15, 30, 30);
-			seconed_p.add(client2_label);
-
-			JLabel client3_label = new JLabel("5");
-			client3_label.setFont(new Font("나눔고딕", Font.BOLD, 12));
-			client3_label.setBounds(210, 15, 30, 30);
-			seconed_p.add(client3_label);
-
-			// 레이어드 시키기
-			seconed_p.setComponentZOrder(client1, 2);
-			seconed_p.setComponentZOrder(client1_label, 0);
-
-			seconed_p.setComponentZOrder(client2, 2);
-			seconed_p.setComponentZOrder(client2_label, 0);
-
-			seconed_p.setComponentZOrder(client3, 2);
-			seconed_p.setComponentZOrder(client3_label, 0);
 
 			/* 붕어빵 갯수 */
 			JPanel third_p = new JPanel();
@@ -258,7 +226,7 @@ public class BungubbangView {
 			JButton mold10 = new JButton();
 			mold10.setBounds(85, 120, 60, 50);
 			mold10.setBackground(Color.BLACK);
-			mold10.addActionListener(new ClickMold(mold10, 9));
+			mold10.addActionListener(new ClickMold(mold02, 9));
 			last_molds.add(mold10);
 
 			JButton mold11 = new JButton();
@@ -311,85 +279,11 @@ public class BungubbangView {
 
 					if (count == 0) {
 						((Timer) e.getSource()).stop();
-						JOptionPane.showMessageDialog(null, "Game End\n 총 " +
-						+ money + "원\n을 벌었습니다.");
-					}
-
-					// 손님 방문
-					if (count % 10 == 3) {
-						for (int i = 0; i < 3; i++) {
-							if (waitingList[i] == null) {
-								waitingList[i] = new People();
-
-								if (i == 0) {
-									comePeople(client1, client1_label);
-									break;
-								}
-								if (i == 1) {
-									comePeople(client2, client2_label);
-									break;
-								}
-								if (i == 2) {
-									comePeople(client3, client3_label);
-									break;
-								}
-							}
-						}
+						JOptionPane.showMessageDialog(null, "Game End");
 					}
 				}
 			});
 			timer.start();
-		}
-
-		public void comePeople(JButton client, JLabel client_label) {
-			client.setIcon(new ImageIcon(this.getClass().getResource(
-					"img/man_orgin.jpg")));
-			client_label
-					.setText(Integer.toString(waitingList[0].getBuyCount()));
-
-			System.out.println(waitingList[0].getBuyCount());
-		}
-
-		private class ClickClient implements ActionListener {
-			int no;
-			int sum;
-			JButton client;
-
-			ClickClient() {
-
-			}
-
-			ClickClient(int no) {
-				this.no = no;
-				sum = 0;
-			}
-
-			public ClickClient(JButton client, int no) {
-				this.no = no;
-				this.client = client;
-				sum = 0;
-			}
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				Bungubbang temp;
-				
-				if (waitingList[no] != null && diplayBungubbang.size() - waitingList[no].getBuyCount() >= 0) {
-					for (int i = 0; i < waitingList[no].getBuyCount(); i++) {
-						temp = diplayBungubbang.poll();
-						sum += temp.getSum();
-
-						System.out.println("sum>> " + sum);
-					}
-
-					money += sum;
-					money_textField.setText(Integer.toString(money));
-					num_textField.setText(Integer.toString(diplayBungubbang
-							.size()));
-					client.setIcon(null);
-					waitingList[no] = null;
-				}
-			}
 		}
 
 		private class ClickMold implements ActionListener {
@@ -419,14 +313,14 @@ public class BungubbangView {
 
 				} else if (clickCount == 1) {
 					timer.stop();
-					molds[no].setFront(molds[no].checkState(count--));
+					molds[no].setFront(molds[no].checkState(count));
 					count = 0;
 					clickCount++;
 					changeIcon();
 
 				} else if (clickCount == 2) {
 					timer.stop();
-					molds[no].setBack(molds[no].checkState(count--));
+					molds[no].setBack(molds[no].checkState(count));
 					clickCount = 0;
 
 					try {
