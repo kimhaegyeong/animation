@@ -12,6 +12,7 @@ public class People {
 		int max = 3;
 		int min = 1;
 		buyCount =  random.nextInt((max - min) + 1) + min;
+		waitTime = 10;
 	}
 
 	public int getBuyCount() {
@@ -26,8 +27,13 @@ public class People {
 		return waitTime;
 	}
 
-	public void setWaitTime(int waitTime) {
-		this.waitTime = waitTime;
+	// 손님이 기다릴 수 있는 시간
+	public int minusWaitTime() {	
+		return waitTime--;		
+	}
+	
+	public String createOrder() {
+		return Integer.toString(buyCount) + "개 주세요~";		
 	}
 	
 }

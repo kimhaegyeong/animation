@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Queue;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -21,7 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 
-public class BungubbangView {
+public class BungubbangView02 {
 
 	private JFrame frame;
 
@@ -32,7 +33,7 @@ public class BungubbangView {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					BungubbangView window = new BungubbangView();
+					BungubbangView02 window = new BungubbangView02();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +45,7 @@ public class BungubbangView {
 	/**
 	 * Create the application.
 	 */
-	public BungubbangView() {
+	public BungubbangView02() {
 		initialize();
 	}
 
@@ -58,15 +59,14 @@ public class BungubbangView {
 		frame.getContentPane().setLayout(null);
 
 		// 배경 그리기
-
+		
 		try {
-			frame.setContentPane(new ImagePanel(ImageIO.read(getClass()
-					.getResource("img/background02.jpg"))));
+			frame.setContentPane(new ImagePanel( ImageIO.read(getClass().getResource("img/background02.jpg"))));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+ 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(245, 255, 250));
 		panel.setBounds(36, 80, 233, 60);
@@ -87,13 +87,13 @@ public class BungubbangView {
 		button.setBackground(new Color(255, 255, 153));
 		button.setFont(new Font("나눔고딕", Font.BOLD, 20));
 		button.setBorderPainted(false);
-
+		
 		// 버튼 내부의 텍스트 border 없음
 		button.setFocusPainted(false);
-
+		
 		button.addActionListener(new StartGame());
 		panel_1.add(button);
-
+		
 		JLabel maker = new JLabel("만든이 : schema9@gmail.com");
 		maker.setForeground(Color.white);
 		maker.setFont(new Font("나눔고딕", Font.BOLD, 10));
@@ -104,15 +104,12 @@ public class BungubbangView {
 		Bungubbang[] molds;
 		Queue<Bungubbang> diplayBungubbang;
 		int money;
-		int heart;
 		JTextField num_textField;
 		JTextField money_textField;
 		People[] waitingList;
-		Timer timer;
 
 		StartGame() {
 			money = 0;
-			heart = 5;
 			waitingList = new People[3];
 		}
 
@@ -121,7 +118,6 @@ public class BungubbangView {
 			molds = new Bungubbang[16];
 			diplayBungubbang = new LinkedList<Bungubbang>();
 
-			// 프레임 내부 콘텐츠 전부 삭제
 			frame.getContentPane().removeAll();
 
 			JPanel top_info = new JPanel();
@@ -129,6 +125,7 @@ public class BungubbangView {
 			frame.getContentPane().add(top_info);
 			top_info.setLayout(null);
 			top_info.setOpaque(false);
+
 
 			money_textField = new JTextField();
 			money_textField.setText(Integer.toString(money));
@@ -147,7 +144,7 @@ public class BungubbangView {
 			top_info.add(heart_label);
 
 			JTextField heart_textField = new JTextField();
-			heart_textField.setText(Integer.toString(heart));
+			heart_textField.setText("5");
 			heart_textField.setBounds(180, 5, 20, 30);
 			top_info.add(heart_textField);
 			heart_textField.setColumns(10);
@@ -163,56 +160,57 @@ public class BungubbangView {
 			top_info.add(time_textField);
 			time_textField.setColumns(10);
 
-			/* 손님 */			
+			/* 손님 */
 			JPanel seconed_p = new JPanel();
 			seconed_p.setBounds(0, 40, 300, 120);
 			frame.getContentPane().add(seconed_p);
 			seconed_p.setLayout(null);
 			seconed_p.setOpaque(false);
 
-			JLabel client1_label = new JLabel();
-			client1_label.setFont(new Font("나눔고딕", Font.BOLD, 12));
-			client1_label.setBounds(15, 0, 80, 30);
-			seconed_p.add(client1_label);
-
-			JLabel client2_label = new JLabel();
-			client2_label.setFont(new Font("나눔고딕", Font.BOLD, 12));
-			client2_label.setBounds(113, 0, 80, 30);
-			seconed_p.add(client2_label);
-
-			JLabel client3_label = new JLabel();
-			client3_label.setFont(new Font("나눔고딕", Font.BOLD, 12));
-			client3_label.setBounds(210, 0, 80, 30);
-			seconed_p.add(client3_label);
 			
 			JButton client1 = new JButton();
 			client1.setBounds(15, 15, 75, 96);
-			client1.addActionListener(new ClickClient(client1, client1_label, 0));
-
+			client1.addActionListener(new ClickClient(client1, 0));
+			
 			// 버튼 배경색 투명화
-			client1.setOpaque(false);
-			client1.setContentAreaFilled(false);
-			client1.setBorderPainted(false);
+ 			client1.setOpaque(false);
+ 			client1.setContentAreaFilled(false);
+ 			client1.setBorderPainted(false);
 
 			seconed_p.add(client1);
 
 			JButton client2 = new JButton();
 			client2.setBounds(113, 15, 75, 96);
-			client2.addActionListener(new ClickClient(client2, client2_label, 1));
+			client2.addActionListener(new ClickClient(client2, 1));
 			client2.setOpaque(false);
 			client2.setContentAreaFilled(false);
 			client2.setBorderPainted(false);
-
+			
 			seconed_p.add(client2);
 
 			JButton client3 = new JButton();
 			client3.setBounds(210, 15, 75, 96);
-			client3.addActionListener(new ClickClient(client3, client3_label, 2));
+			client3.addActionListener(new ClickClient(client3, 2));
 			client3.setOpaque(false);
 			client3.setContentAreaFilled(false);
 			client3.setBorderPainted(false);
+			
+			seconed_p.add(client3);
 
-			seconed_p.add(client3);			
+			JLabel client1_label = new JLabel();
+			client1_label.setFont(new Font("나눔고딕", Font.BOLD, 12));
+			client1_label.setBounds(15, 0, 60, 30);
+			seconed_p.add(client1_label);
+
+			JLabel client2_label = new JLabel();
+			client2_label.setFont(new Font("나눔고딕", Font.BOLD, 12));
+			client2_label.setBounds(113, 0, 60, 30);
+			seconed_p.add(client2_label);
+
+			JLabel client3_label = new JLabel();
+			client3_label.setFont(new Font("나눔고딕", Font.BOLD, 12));
+			client3_label.setBounds(210, 0, 60, 30);
+			seconed_p.add(client3_label);
 
 			// 레이어드 시키기
 			seconed_p.setComponentZOrder(client1, 2);
@@ -350,16 +348,21 @@ public class BungubbangView {
 			// 기본 옵션창
 			JOptionPane.showMessageDialog(null, "Game Start");
 
-			timer = new javax.swing.Timer(1000, new ActionListener() {
+			Timer timer = new javax.swing.Timer(1000, new ActionListener() {
 				Integer count = 60;
 
 				public void actionPerformed(ActionEvent e) {
 					count--;
 					time_textField.setText(count.toString());
 
+					if (count == 0) {
+						((Timer) e.getSource()).stop();
+						JOptionPane.showMessageDialog(null, "Game End\n 총 " +
+						+ money + "원\n을 벌었습니다.");
+					}
+
 					// 손님 방문
-					// 횟수
-					if (count % 8 == 3) {
+					if (count % 10 == 3) {
 						for (int i = 0; i < 3; i++) {
 							if (waitingList[i] == null) {
 								waitingList[i] = new People();
@@ -379,108 +382,16 @@ public class BungubbangView {
 							}
 						}
 					}
-
-					// 대기 시간에 따른 손님 반응
-					for (int i = 0; i < 3; i++) {
-						if (waitingList[i] != null) {
-							waitingList[i].minusWaitTime();
-
-							if (waitingList[i].getWaitTime() <= 2
-									&& waitingList[i].getWaitTime() > 0) { // 짜증나는
-																			// 상태
-								if (i == 0)
-									client1.setIcon(new ImageIcon(this
-											.getClass().getResource(
-													"img/man_bad.png")));
-								if (i == 1)
-									client2.setIcon(new ImageIcon(this
-											.getClass().getResource(
-													"img/man_bad.png")));
-								if (i == 2)
-									client3.setIcon(new ImageIcon(this
-											.getClass().getResource(
-													"img/man_bad.png")));
-							} else if (waitingList[i].getWaitTime() <= 0) { // 참다가
-																			// 가버림
-								if (i == 0) {
-									client1.setIcon(null);
-									client1_label.setText(null);
-									client1_label.setOpaque(false);
-								}
-								if (i == 1) {
-									client2.setIcon(null);
-									client2_label.setText(null);
-									client2_label.setOpaque(false);
-								}
-								if (i == 2) {
-									client3.setIcon(null);
-									client3_label.setText(null);
-									client3_label.setOpaque(false);
-								}
-
-								waitingList[i] = null;
-
-								heart_textField.setText(Integer
-										.toString(--heart));
-							}
-						}
-
-						if (count == 0 || heart <= 0) {
-							endGame();
-						}
-
-					}
 				}
 			});
 			timer.start();
 		}
 
-		public void endGame() {
-			timer.stop();
-
-			frame.getContentPane().removeAll();
-			frame.repaint();
-
-			JPanel panel = new JPanel();
-			panel.setBackground(new Color(245, 255, 250));
-			panel.setBounds(36, 80, 240, 120);
-			frame.getContentPane().add(panel);
-
-			JLabel lblGameEnd = new JLabel("Game Over");
-			lblGameEnd.setFont(new Font("Dialog", Font.BOLD, 32));
-			lblGameEnd.setForeground(new Color(220, 20, 60));
-			panel.add(lblGameEnd);
-
-			JLabel text = new JLabel("총 " + money + "원\n을 벌었습니다.");
-			text.setFont(new Font("Dialog", Font.BOLD, 15));
-			text.setBounds(40, 40, 200, 20);
-			panel.add(text);
-
-			JPanel panel_1 = new JPanel();
-			panel_1.setBounds(36, 240, 233, 245);
-			// 배경이 투명하게
-			panel_1.setOpaque(false);
-			frame.getContentPane().add(panel_1);
-
-			JButton button = new JButton("게임 시작하기");
-			button.setBackground(new Color(255, 255, 153));
-			button.setFont(new Font("나눔고딕", Font.BOLD, 20));
-			button.setBorderPainted(false);
-
-			// 버튼 내부의 텍스트 border 없음
-			button.setFocusPainted(false);
-
-			button.addActionListener(new StartGame());
-			panel_1.add(button);
-
-		}
-
 		public void comePeople(JButton client, JLabel client_label) {
 			client.setIcon(new ImageIcon(this.getClass().getResource(
 					"img/man_orgin.png")));
-			client_label.setText(waitingList[0].createOrder());
-			client_label.setBackground(Color.white);
-			client_label.setOpaque(true);
+			client_label
+					.setText(Integer.toString(waitingList[0].getBuyCount()));
 
 			System.out.println(waitingList[0].getBuyCount());
 		}
@@ -489,9 +400,7 @@ public class BungubbangView {
 			int no;
 			int sum;
 			JButton client;
-			JLabel client_label;
-			int clientTimerCount = 0;
-			
+
 			ClickClient() {
 
 			}
@@ -501,67 +410,30 @@ public class BungubbangView {
 				sum = 0;
 			}
 
-			public ClickClient(JButton client, JLabel client_label, int no) {
+			public ClickClient(JButton client, int no) {
 				this.no = no;
 				this.client = client;
-				this.client_label = client_label;
 				sum = 0;
 			}
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Bungubbang temp;
+				
+				if (waitingList[no] != null && diplayBungubbang.size() - waitingList[no].getBuyCount() >= 0) {
+					for (int i = 0; i < waitingList[no].getBuyCount(); i++) {
+						temp = diplayBungubbang.poll();
+						sum += temp.getSum();
 
-				if (waitingList[no] != null) {
-					int buyCount = waitingList[no].getBuyCount();
-
-					if ((diplayBungubbang.size() - buyCount) >= 0) {
-						for (int i = 0; i < buyCount; i++) {
-							temp = diplayBungubbang.poll();
-							sum += temp.getSum();
-
-							System.out.println("sum>> " + sum);
-						}
-						
-						// 손님반응을 표현해 주기위한 timer
-						Timer clientTimer = new javax.swing.Timer(1000, new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
-								System.out.println("buyCount>>" + buyCount);
-								
-								if (clientTimerCount == 0) {
-									// 손님의 반응
-									if (sum >= (buyCount * 100) - 50 ) {				
-										client.setIcon(new ImageIcon(this.getClass()
-												.getResource("img/man_happy.jpg")));				// 행복
-										client_label.setText("맛있어서 행복해요");
-									} else if ( sum <= (buyCount * 100 / 2)) {
-										client.setIcon(new ImageIcon(this.getClass()
-												.getResource("img/man_bad.jpg")));					// 짜증 
-										client_label.setText("맛없어요");
-									} else {															// 소소
-										client.setIcon(new ImageIcon(this.getClass()
-												.getResource("img/man_orgin.jpg")));	
-										client_label.setText("그냥 그래요");
-									}	
-									
-									money += sum;
-									money_textField.setText(Integer.toString(money));
-									num_textField.setText(Integer.toString(diplayBungubbang
-											.size()));
-									
-								} else if (clientTimerCount >= 3) {
-									client.setIcon(null);
-									client_label.setText(null);
-									client_label.setOpaque(false);
-									waitingList[no] = null;
-									((Timer) e.getSource()).stop();
-								}
-
-								clientTimerCount++;
-							}
-						});
-						clientTimer.start();						
+						System.out.println("sum>> " + sum);
 					}
+
+					money += sum;
+					money_textField.setText(Integer.toString(money));
+					num_textField.setText(Integer.toString(diplayBungubbang
+							.size()));
+					client.setIcon(null);
+					waitingList[no] = null;
 				}
 			}
 		}
@@ -585,20 +457,20 @@ public class BungubbangView {
 			}
 
 			public void actionPerformed(ActionEvent e) {
-				if (clickCount == 0) { // 붓기
+				if (clickCount == 0) {												// 붓기
 					molds[no] = new Bungubbang();
 					clickCount++;
 					count = 0;
 					changeIcon();
 
-				} else if (clickCount == 1) { // 앙금 넣기
+				} else if (clickCount == 1) {										// 앙금 넣기
 					timer.stop();
 					molds[no].setFront(molds[no].checkState(count--));
 					count = 0;
 					clickCount++;
 					changeIcon();
 
-				} else if (clickCount == 2) { // 뒤집기
+				}  else if (clickCount == 2) {										// 뒤집기
 					timer.stop();
 					molds[no].setBack(molds[no].checkState(count--));
 					clickCount = 0;
@@ -650,20 +522,18 @@ public class BungubbangView {
 			}
 		}
 	}
-
+	
 	// 배경
 	class ImagePanel extends JComponent {
-		private Image image;
-
-		public ImagePanel(Image image) {
-			this.image = image;
-		}
-
-		@Override
-		protected void paintComponent(Graphics g) {
-			super.paintComponent(g);
-			g.drawImage(image, 0, 0, this);
-		}
+	    private Image image;
+	    public ImagePanel(Image image) {
+	        this.image = image;
+	    }
+	    @Override
+	    protected void paintComponent(Graphics g) {
+	        super.paintComponent(g);
+	        g.drawImage(image, 0, 0, this);
+	    }
 	}
 
 }
