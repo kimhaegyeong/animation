@@ -14,5 +14,6 @@ http://schema9.esy.es/html5_test/animation07.html <br>
 <h3>tycoon01</h3>
 <p>붕어빵 타이쿤 게임 <br>
 java, swing<br></p>
+<div>
 <iframe width="420" height="315" src="https://www.youtube.com/embed/z-ndpe0TKWo" frameborder="0" allowfullscreen></iframe>
-
+</div>
