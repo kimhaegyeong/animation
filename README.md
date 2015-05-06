@@ -18,7 +18,7 @@ https://youtu.be/z-ndpe0TKWo <br>
 <br>
 <br>
 <br>
-<h3>SVGanimation01</h3><
+<h3>SVGanimation01</h3>
 SVG 애니메이션<br>
 css<br>
 http://schema9.esy.es/animation/svg_ani01/svg.html <br>
