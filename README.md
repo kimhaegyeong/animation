@@ -15,10 +15,10 @@ http://schema9.esy.es/html5_test/animation07.html <br>
 <p>붕어빵 타이쿤 게임 <br>
 java, swing<br></p>
 https://youtu.be/z-ndpe0TKWo <br>
-
-
-
-<h3>SVGanimation01</h3><br>
+<br>
+<br>
+<br>
+<h3>SVGanimation01</h3><
 SVG 애니메이션<br>
 css<br>
 http://schema9.esy.es/animation/svg_ani01/svg.html <br>
